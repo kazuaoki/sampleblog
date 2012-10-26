@@ -6,6 +6,7 @@
 <% if @current_user %>
 <div align="right"><%= link_to "新規登録", new_article_path %></div>
 <% end %>
+<br>
 <% if @articles.present? %>
 	<% @articles.each do |article| %>
 		<%=article.updated_at%><br>
