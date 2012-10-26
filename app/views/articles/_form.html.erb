@@ -1,0 +1,12 @@
+<%= render "shared/errors", obj: @article %>
+
+<table class="attr">
+	<tr>
+		<th><%= form.label :title, "件名" %></th>
+		<td><%= form.text_field :title, size: 20%></td>
+	</tr>
+	<tr>
+		<th><%= form.label :content, "内容" %></th>
+		<td><%= form.text_area :content, cols: 50, rows: 12 %></td>
+	</tr>
+</table>

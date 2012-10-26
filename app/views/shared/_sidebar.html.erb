@@ -1,0 +1,20 @@
+<% unless @current_user %>
+<%= render "shared/login_form" %>
+<% end %>
+
+<h2>ブログ一覧</h2>
+<% if @current_user %>
+<div align="right"><%= link_to "新規登録", new_article_path %></div>
+<% end %>
+<% if @articles.present? %>
+	<% @articles.each do |article| %>
+		<%=article.updated_at%><br>
+		<%= link_to article.title, article_path(article) %><br>
+		<% if @current_user %>
+		<div align="right"><%= link_to "削除", article, method: :delete, confirm: "本当に削除しますか？" %></div>
+		<% end %>
+		<hr>
+	<% end %>
+<% else %>
+	<p>記事がありません。</p>
+<% end %>

@@ -1,0 +1,14 @@
+<%= image_tag("rails.png", size: "100x48", alt: "サンプルブログ") %>
+<% if @current_user %>
+<p class="user">
+<%= @current_user.name %>さん |
+<%= link_to "ログアウト", :session,
+      method: :delete, confirm: "ログアウトしますか？"  %>
+</p>
+<% end %>
+
+<div class="menubar">
+	<%= menu_link_to "TOP", :root %> &nbsp;|&nbsp;
+	<s>メニュー２</s> &nbsp;|&nbsp;
+	<s>メニュー３</s> &nbsp;|&nbsp;
+</div>

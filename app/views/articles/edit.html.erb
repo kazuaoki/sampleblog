@@ -1,0 +1,8 @@
+<h4>記事の編集</h4>
+
+<%= link_to "記事に戻る", article_path(@article) %>
+
+<%= form_for @article do |form| %>
+<%= render "form", form: form %>
+<p><%= form.submit "更新", confirm: "更新してよろしいですか？" %></p>
+<% end %>

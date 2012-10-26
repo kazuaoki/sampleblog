@@ -1,0 +1,68 @@
+<% if @contentArticle.present? %>
+	<table width="500">
+		<tr>
+			<td><h4>記事の詳細</h4></td>
+		</tr>
+		<tr>
+			<td><%= @contentArticle.title %></td>
+		</tr>
+		<tr>
+			<% if @current_user %>
+			<td align="right"><%= link_to "編集", edit_article_path(@contentArticle) %></td>
+			<% end %>
+		</tr>
+		<tr>
+			<td><hr></td>
+		</tr>
+		<tr>
+			<td align="right"><%= @contentArticle.updated_at %></td>
+		</tr>
+		<tr>
+			<td><%= simple_format @contentArticle.content %></td>
+		</tr>
+	</table>
+	<div id="comment" align="right">
+	<% if @comments.present? %>
+	<table width="310">
+		<% @comments.each do |comment| %>
+		<tr>
+			<td><hr></td>
+		</tr>
+		<tr>
+			<td class="comment" align="left">お名前：<%= comment.name %></td>
+		</tr>
+		<tr>
+			<td class="comment"><%= comment.created_at %></td>
+		</tr>
+		<tr>
+			<td class="comment" align="left"><%= simple_format comment.comment %></td>
+		</tr>
+		<% end %>
+	</table>
+	<% end %>
+	<%= form_tag :comment do %>
+	<hr align="right" width="310">
+	<% if flash[:comment] %>
+	<p class="alert"><%= flash[:comment] %></p>
+	<% end %>
+	<table>
+		<tr>
+			<td class="comment" align="right">お名前：</td>
+			<td><%= text_field_tag "name", "", :size=>"32" %></td>
+		</tr>
+		<tr>
+			<td class="comment">コメント：</td>
+			<td><%= text_area_tag "comment", "", :size=>"25x3" %></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="right">
+	<%= submit_tag "コメント", confirm: "コメントしてよろしいですか？" %></td>
+		</tr>
+	</table>
+	</div>
+	<%= hidden_field_tag("article_id", @contentArticle.id) %>
+	<%= hidden_field_tag "from", request.path %>
+	<% end %>
+<% else %>
+	記事を登録してください。
+<% end %>

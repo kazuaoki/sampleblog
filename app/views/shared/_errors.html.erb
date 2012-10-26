@@ -1,0 +1,10 @@
+<% unless obj.errors.empty? %>
+<div id="errors">
+<h4>エラーがあります。</h4>
+<ul>
+	<% obj.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+</ul>
+</div>
+<% end %>

@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      article: 記事
+    attributes:
+      article:
+        title: タイトル
+        content: 内容
+    errors:
+      #format: ! '%{attribute}%{message}'
+      messages:
+        blank: "を入力してください。"
+        too_long: "は%{count}文字以内で入力してください。"
